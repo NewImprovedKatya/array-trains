@@ -1,0 +1,86 @@
+
+.work-sans-train {
+    font-family: "Work Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+  }
+    body {
+		background-color: #75b8e3;
+        color: #303030;
+	}
+    h1 {
+       /*color: #ed6a24;*/
+       /*light orange : #f28e1f*/
+       color: #538c3f;
+    }
+	.intro {
+	text-align: center;
+    color: #c6e5f7;
+	}
+	#train-yard {
+	background-color: #82b740;
+	box-shadow: inset 0px 0px 5px #000000bb;
+	}
+	img {
+	width: 100%;
+	}
+     .train {
+       display: grid;
+       grid-template-columns: repeat(6, 1fr);
+       gap: 4px;
+     }
+     .tracks {
+       display: grid;
+       grid-template-columns: repeat(6, 1fr);
+       gap: 4px;
+     }
+     .slot {
+       
+       width: 100;
+     }
+	#challenge {
+		background-color: #c6e5f7;
+	}
+     #train-array {
+		text-align: center;
+     }
+     .play {
+       display: none;
+     }
+     .progress-bar {
+       background-color: #c6e5f7;
+       height: 1.5rem;
+       width: 100;
+		border-radius: 8px;
+     }
+     .progress {
+       background-color: gold;
+       height: 100%;
+       width: 0;
+		border-radius: 8px;
+     }
+	.level-points {
+		display: flex;
+		justify-content: space-between;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+	.next-buttons {
+		display: flex;
+		justify-content: center;
+	}
+	.hint {
+	background-color: #c6e5f7;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+	}
+	#answer {
+    font-weight: bold;
+    margin: 0;
+	}
