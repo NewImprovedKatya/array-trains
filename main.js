@@ -98,7 +98,8 @@ function nextLevel() {
 const levelInfo = [
   {
     hint: false,
-    challenge: "purple",
+    car: 'track',
+    challenge: "Add tracks",
     answer: `const myTracks = [];`,
     action: () => {
       const rail = document.createElement("img");
@@ -108,124 +109,32 @@ const levelInfo = [
   },
   {
     hint: false,
-    challenge:
-      "Next, let’s add the train’s engine. To add something to an array, we can use a method called push. Type the following code to push an engine onto your array tracks:",
+    car: 'engine',
+    challenge: 'Add engine',
     answer: "myTracks.push(‘engine’);",
     action: () => {
       myTracks.push("engine");
-      const slotOneImage = document.createElement("img");
-      slotOneImage.src = "/img/engine.svg";
-
-      slotOne.appendChild(slotOneImage);
+      actionPush('engine');
     },
   },
   {
     hint: false,
-    challenge: "Now, let’s do the same thing to add a boxcar:",
-    answer: "myTracks.push(‘boxcar’);",
-    action: () => {
-      myTracks.push("boxcar");
-      const slotTwoImage = document.createElement("img");
-      slotTwoImage.src = "/img/boxcar.svg";
-
-      slotTwo.appendChild(slotTwoImage);
-    },
-  },
-  {
-    hint: true,
+    car: 'boxcar',
     challenge:
-      "Every train needs a caboose! Use the push method to add a caboose:",
-    answer: "myTracks.push(‘caboose’);",
+      "Add Boxcar",
+    answer: `myTracks.push('boxcar');`,
     action: () => {
-      myTracks.push("caboose");
-      const slotThreeImage = document.createElement("img");
-      slotThreeImage.src = "/img/caboose.svg";
-
-      slotThree.appendChild(slotThreeImage);
-    },
-  },
-  {
-    hint: false,
-    challenge:
-      "Let’s make the train longer. Push a passenger car onto the array:",
-    answer: "myTracks.push(‘passenger car’);",
-    action: () => {
-      myTracks.push("passenger car");
-      const slotFourImage = document.createElement("img");
-      slotFourImage.src = "/img/passenger car.svg";
-
-      slotFour.appendChild(slotFourImage);
-    },
-  },
-  {
-    hint: false,
-    challenge:
-      "Hm, we probably should move the caboose to the end. Let’s remove the last item in an array, we can use the pop() method. Type the following code to pop the passenger car off the end of the array.",
-    answer: "myTracks.pop();",
-    action: () => {
-      myTracks.pop();
-
-      slotFour.removeChild(slotFour.firstElementChild);
-    },
-  },
-  {
-    hint: false,
-    challenge: "Now pop the caboose off the end as well.",
-    answer: "myTracks.pop();",
-    action: () => {
-      myTracks.pop();
-
-      slotThree.removeChild(slotThree.firstElementChild);
-    },
-  },
-  {
-    hint: true,
-    challenge: "Ok, now add the passenger car back on with the push method.",
-    answer: "myTracks.push(‘passenger car’);",
-    action: () => {
-      myTracks.push("passenger car");
-      const slotThreeImage = document.createElement("img");
-      slotThreeImage.src = "/img/passenger car.svg";
-
-      slotThree.appendChild(slotThreeImage);
-    },
-  },
-  {
-    hint: false,
-    challenge: "Add the caboose:",
-    answer: "myTracks.push(‘caboose’);",
-    action: () => {
-      myTracks.push("caboose");
-      const slotFourImage = document.createElement("img");
-      slotFourImage.src = "/img/caboose.svg";
-
-      slotFour.appendChild(slotFourImage);
-    },
-  },
-  {
-    hint: false,
-    challenge: "Now we know how to add and remove things to the end of an array, but what if we want to change something in the front? We can use the shift method to remove the first item in the array:",
-    answer: "myTracks.shift();",
-    action: () => {
-      myTracks.shift();
-
-      slotOne.remove();
-    },
-  },
-  {
-    hint: false,
-    challenge:
-      "That worked, but our train won’t get anywhere without an engine. We can use the method unshift to put an engine in the front.",
-    answer: "myTracks.unshift(‘engine’);",
-    action: () => {
-      myTracks.unshift("engine");
-      const slotOne = document.createElement("div");
-      slotOne.id = "slot1";
-      trainWrapper.insertBefore(slotOne, trainWrapper.firstChild);
-      const slotOneImage = document.createElement("img");
-      slotOneImage.src = "/img/engine.svg";
-
-      slotOne.appendChild(slotOneImage);
+      myTracks.push(this.car);
+      actionPush('boxcar');
     },
   },
 ];
+
+function actionPush(src) {
+	const trainCar = document.createElement('img');
+  trainCar.src = `img/${src}.svg`;
+  trainCar.className = 'slot';
+  trainWrapper.appendChild(trainCar);
+
+}
+
