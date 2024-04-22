@@ -1,27 +1,214 @@
 
+/* Fonts */
+:root {
+  --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Raleway", sans-serif;
+}
 
+/* Global Colors */
+:root {
+  --background-color: #c6e5f7;
+  --background-color-rgb: 255, 255, 255;
+  --default-color: #212529;
+  --default-color-rgb: 33, 37, 41;
+  --heading-color: #1076be;
+  --heading-color-rgb: 122, 105, 96;
+  --accent-color: #ed6a24;
+  --accent-color-rgb: 235, 93, 30;
+  --contrast-color: #ffffff;
+  --contrast-color-rgb: 255, 255, 255;
+}
 
-
-
-.work-sans-train {
-    font-family: "Work Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-  }
-    body {
-		background-color: #75b8e3;
-        color: #303030;
-	}
-    h1 {
        /*color: #ed6a24;*/
        /*light orange : #f28e1f*/
-       color: #538c3f;
-    }
-	.intro {
-	text-align: center;
-    color: #c6e5f7;
-	}
+       /*color: #c6e5f7;*/
+       /*color: #538c3f;*/
+
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+}
+button {
+  background-color: orange;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: rgba(var(--accent-color-rgb), 0.75);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  scroll-margin-top: 90px;
+  overflow: clip;
+}
+
+@media (max-width: 1199px) {
+
+  section,
+  .section {
+    scroll-margin-top: 66px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}
+  /*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  --background-color: rgba(var(--accent-color-rgb), 0.03);
+  width: 100%;
+  min-height: 70vh;
+  position: relative;
+  padding: 120px 0 60px 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid rgba(var(--accent-color-rgb), 0.25);
+}
+
+.hero h1 {
+  color: #ed6a24;
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+}
+
+.hero p {
+  color: rgba(var(--default-color-rgb), 0.7);
+  margin: 5px 0 30px 0;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.hero .btn-play {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  font-family: var(--heading-font);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 12px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  box-shadow: 0 8px 28px rgba(var(--accent-color-rgb), 0.2);
+}
+
+.hero .btn-play:hover {
+  color: var(--contrast-color);
+  background: rgba(var(--accent-color-rgb), 0.85);
+  box-shadow: 0 8px 28px rgba(var(--accent-color-rgb), 0.45);
+}
+
+
+.hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+
+  .hero .btn-get-started {
+    font-size: 13px;
+  }
+}
+/*Play*/
+.about .about-content h3 {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+
+.about .about-content h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.about .about-content p {
+  font-size: 15px;
+}
+
+.about .about-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+
 	#train-yard {
 	background-color: #82b740;
 	box-shadow: inset 0px 0px 5px #000000bb;
@@ -53,7 +240,7 @@
        display: none;
      }
      .progress-bar {
-       background-color: #c6e5f7;
+       background-color: white;
        height: 1.5rem;
        width: 100;
 		border-radius: 8px;
@@ -88,3 +275,20 @@
     font-weight: bold;
     margin: 0;
 	}
+
+  @media (max-width: 640px) {
+    .hero h1 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  
+    .hero p {
+      font-size: 18px;
+      line-height: 24px;
+      margin-bottom: 30px;
+    }
+  
+    .hero btn-play {
+      font-size: 13px;
+    }
+  }
