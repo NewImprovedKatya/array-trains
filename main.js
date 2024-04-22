@@ -21,11 +21,6 @@ const progress = document.querySelector(".progress");
 const nextLevelButton = document.getElementById("next-level");
 
 const trainWrapper = document.getElementById("train");
-let slotOne = document.getElementById("slot1");
-let slotTwo = document.getElementById("slot2");
-let slotThree = document.getElementById("slot3");
-let slotFour = document.getElementById("slot4");
-let slotFive = document.getElementById("slot5");
 
 playButton.addEventListener("click", play);
 
@@ -99,7 +94,7 @@ const levelInfo = [
   {
     hint: false,
     car: 'track',
-    challenge: "Add tracks",
+    challenge: `In JavaScript, an array is a special type of object that contains a collection of items. Array items are always aligned within square brackets, kind of like how train cars are aligned on a track.`,
     answer: `const myTracks = [];`,
     action: () => {
       const rail = document.createElement("img");
@@ -123,9 +118,39 @@ const levelInfo = [
     challenge:
       "Add Boxcar",
     answer: `myTracks.push('boxcar');`,
-    action: () => {
+    action: function() {
       myTracks.push(this.car);
       actionPush('boxcar');
+      console.log(this.car);
+    },
+  },
+  {
+    hint: false,
+    challenge:
+      "Add Caboose",
+    answer: `myTracks.push('caboose');`,
+    action: () => {
+      myTracks.push('caboose');
+      actionPush('caboose');
+    },
+  },
+  {
+    hint: false,
+    challenge:
+      'Remove Caboose',
+    answer: `myTracks.pop('caboose');`,
+    action: function() {
+      myTracks.pop('caboose');
+      actionPop();
+    },
+  },
+  {
+    hint: false,
+    challenge:
+      'Select Caboose',
+    answer: `myTracks.pop('caboose');`,
+    action: function() {
+      indexSelect(1);
     },
   },
 ];
@@ -135,6 +160,44 @@ function actionPush(src) {
   trainCar.src = `img/${src}.svg`;
   trainCar.className = 'slot';
   trainWrapper.appendChild(trainCar);
-
 }
+
+function actionPop() {
+  trainWrapper.removeChild(trainWrapper.lastElementChild);
+  }
+  
+function actionShift() {
+  trainWrapper.removeChild(trainWrapper.firstElementChild);
+  }
+
+function actionUnshift(src) {
+	const trainCar = document.createElement('img');
+  trainCar.src = `${src}.svg`;
+  trainCar.className = 'slot';
+trainWrapper.insertBefore(trainCar, trainWrapper.firstChild);
+}
+
+function actionRemove(index) {
+  const childToRemove = trainWrapper.childNodes[index]; 
+  if (childToRemove) {
+    trainWrapper.removeChild(childToRemove);
+  } else {
+    console.log("There is no third child element.");
+  }
+}
+
+function actionAdd(src, index) {
+  alert('why????');
+  const newItem = document.createElement('img');
+  newItem.src = `${src}.svg`;
+  trainWrapper.insertBefore(newItem, trainWrapper.children[index]);
+}
+
+function indexSelect(index) {
+	trainWrapper.children[index].style.boxShadow = 'inset 0 0 5px #303030';
+}
+
+  
+  
+
 
