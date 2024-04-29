@@ -27,7 +27,6 @@ playButton.addEventListener("click", play);
 function play() {
   offDiv.style.display = "block";
   intro.style.display = "none";
-  nextLevelButton.disabled = true;
 }
 
 submitButton.addEventListener("click", submitAnswer);
@@ -83,13 +82,6 @@ function refreshTrain() {
   }
 }
 
-hintButton.addEventListener("click", revealHint);
-
-function revealHint() {
-  answer.textContent = levelInfo[level].answer;
-  points -= 2;
-  hintButton.disabled = true;
-}
 
 nextLevelButton.addEventListener("click", nextLevel);
 
@@ -112,14 +104,11 @@ function nextLevel() {
     document.getElementById("form").reset();
     levelDisplay.textContent = "Level: " + level;
     progress.style.width = Math.round((level / totalLevels) * 100) + "%";
-    if (levelInfo[level].hint) {
-      answer.textContent = "";
-      hintButton.disabled = false;
-    } else {
-      answer.textContent = levelInfo[level].answer;
-    }
+    hintDisplay();
   }
 }
+
+
 
 const levelInfo = [
   {
@@ -135,7 +124,7 @@ const levelInfo = [
     },
   },
   {
-    hint: false,
+    hint: true,
     info: "To add an item to an array, you can use a method called PUSH.",
     challenge: "Add an engine to your tracks by typing in the following code:",
     answer: "myTracks.push('engine');",
@@ -267,4 +256,34 @@ const levelInfo = [
 
 function indexSelect(index) {
   trainWrapper.children[index].style.boxShadow = "inset 0 0 5px #303030";
+}
+// function hintDisplay() {
+//   if (levelInfo[level].hint === true) {
+//     answer.style.display = 'none';
+//     const hintButton = document.createElement('button');
+//     hintButton.textContent = 'HINT';
+//     document.getElementById('hint-div').appendChild(hintButton);
+//     hintButton.addEventListener('click', revealHint);
+//   } else {
+//     answer.style.display = 'block';
+//     answer.textContent = levelInfo[level].answer;
+//     hintButton.remove();
+//   }
+// }
+
+hintButton.addEventListener('click', revealHint);
+
+function hintDisplay() {
+  if (levelInfo[level].hint === true) {
+    hintButton.style.display = 'block';
+    answer.style.display = 'none';
+  } else {
+    hintButton.style.display = 'none';
+    answer.style.display = 'block';
+  }
+}
+
+function revealHint() {
+  hintButton.remove();
+  answer.style.display = 'block';
 }

@@ -42,6 +42,9 @@ body {
 button {
   background-image: linear-gradient(#f28e1f, #ed6a24);
 }
+#hint-button {
+  display: none;
+}
 
 .btn-play {
   color: var(--contrast-color);
@@ -54,9 +57,34 @@ button {
   padding: 10px 28px 12px 28px;
   border-radius: 50px;
   transition: 0.5s;
-  box-shadow: 0 8px 28px rgba(var(--accent-color-rgb), 0.2);
-  border: 30px;
-  border-color: #303030;
+  border: 2px solid #303030;
+
+}
+#next-level {
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+ 
+}
+#prev-level {
+  border-bottom-left-radius: 50px;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+#level-display {
+  color: var(--contrast-color);
+  background: linear-gradient(#f28e1f, #ed6a24);
+  font-family: var(--heading-font);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 1px;
+  border: 2px #303030;
+  border-style: solid none;
+  margin-bottom: 0;
+  flex-grow: 1;
+  text-align: center;
 }
 
 a {
@@ -136,7 +164,7 @@ section,
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  --background-color: rgba(var(--accent-color-rgb), 0.03);
+
   width: 100%;
   min-height: 70vh;
   position: relative;
@@ -151,6 +179,7 @@ section,
   font-size: 48px;
   font-weight: 700;
   line-height: 56px;
+  -webkit-text-stroke: 2px #303030;
 }
 
 .hero p {
@@ -231,7 +260,6 @@ img {
   grid-template-columns: repeat(6, 1fr);
   aspect-ratio: 6 / 2;
   gap: 4px;
-  background: linear-gradient(blue, white, #538c3f 33%, #538c3f 66%);
 }
 .tracks {
   display: grid;
@@ -275,9 +303,7 @@ form {
   display: flex;
   justify-content: center;
 }
-.lvl-btn {
-  border-left-radius: 50px;
-}
+
 .hint {
   background-color: #c6e5f7;
   display: flex;

@@ -56,17 +56,11 @@
                 down the tracks:
               </h4>
 
-              <div class="align-items-center">
-                <button
-                  class="btn-play"
-                  id="hint-button"
-                  type="button"
-                  disabled
-                >
-                  Hint
-                </button>
+              <div id="hint-div" class="d-flex justify-content-center">
+                <button id="hint-button" type="button">HINT</button>
                 <code id="hint">const myTracks = [];</code>
-              
+              </div>
+
               <h3 class="text-center" id="message">Ready?</h3>
 
               <form id="form">
@@ -82,38 +76,30 @@
                   </button>
                 </div>
               </form>
-</div>
-              <div class="d-flex align-items-center justify-content-between">
-                
 
-                <div class="d-flex align-items-center justify-content-center">
-                  <button
-                    class="btn lvl-btn"
-                    id="prev-level"
-                    type="button"
-                    disabled
-                  >
-                    Prev
-                  </button>
-                  <p id="level-display">level: 1/15</p>
+              <div class="d-flex w-100 mt-3 justify-content-between">
+                <button
+                  class="btn btn-play lvl-btn"
+                  id="prev-level"
+                  type="button"
+                  disabled
+                >
+                  Prev
+                </button>
+                <p id="level-display" class="w-*">level: 1/15</p>
 
-                  <button
-                    class="lvl-btn"
-                    id="next-level"
-                    type="button"
-                    disabled
-                  >
-                    Next
-                  </button>
-                </div>
+                <button
+                  class="btn-play lvl-btn"
+                  id="next-level"
+                  type="button"
+                  disabled
+                >
+                  Next
+                </button>
               </div>
             </div>
           </div>
           <div class="col-lg-6 about-content">
-            <div class="progress-bar">
-              <div class="progress"></div>
-            </div>
-
             <div class="rounded-3 border border-white" id="train-yard">
               <h4 class="p-2 text-white" id="train-array">
                 [ Your array will display here ]
@@ -121,7 +107,6 @@
               <div class="train" id="train"></div>
             </div>
           </div>
-          <p id="points-display">Points: 0</p>
         </div>
       </div>
     </section>
