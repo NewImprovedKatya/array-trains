@@ -1,92 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Array Trains</title>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="style.css">
-   <title>Array Trains Game</title>
- </head>
- <body>
-   <!-- Hero Section -->
-   <section id="hero" class="section hero intro">
-
-    <div class="container">
-      <div class="row gy-4">
-        <div class="col order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center">
-          <h1 class="">Array Trains</h1>
-          <p>Learn Javascript arrays by assembling fun trains!</p>
-          <div class="d-flex">
-            <button class="btn-play" id="play" type="button">PLAY</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Trains</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Array Trains Game</title>
+  </head>
+  <body>
+    <!-- Hero Section -->
+    <section id="hero" class="section hero intro">
+      <div class="container">
+        <div class="row gy-4">
+          <div
+            class="col order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center"
+          >
+            <h1 class="">Array Trains</h1>
+            <p>Learn Javascript arrays by assembling fun trains!</p>
+            <div class="d-flex">
+              <button class="btn-play" id="play" type="button">PLAY</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section><!-- /Hero Section -->
+    </section>
+    <!-- /Hero Section -->
 
-<!-- Play Section -->
-<section id="about" class="section about play">
+    <!-- Play Section -->
+    <section id="about" class="section about play">
+      <div class="container">
+        <div class="row gy-3">
+          <div class="col-lg-6 d-flex flex-column justify-content-center">
+            <div class="about-content ps-0 ps-lg-3">
+              <p id="info">
+                In JavaScript, an array is a special type of object that
+                contains a collection of items. Array items are always aligned
+                within square brackets, kind of like how train cars are aligned
+                on a track.
+              </p>
+              <h4 id="challenge">
+                Type the following code to establish your empty array and lay
+                down the tracks:
+              </h4>
 
-  <div class="container">
+              <div class="align-items-center">
+                <button
+                  class="btn-play"
+                  id="hint-button"
+                  type="button"
+                  disabled
+                >
+                  Hint
+                </button>
+                <code id="hint">const myTracks = [];</code>
+              
+              <h3 class="text-center" id="message">Ready?</h3>
 
-    <div class="row gy-3">
+              <form id="form">
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    id="input"
+                    placeholder="Write code here..."
+                    type="text"
+                  />
+                  <button class="btn btn-play" id="submit" type="button">
+                    TRY
+                  </button>
+                </div>
+              </form>
+</div>
+              <div class="d-flex align-items-center justify-content-between">
+                
 
-      <div class="col-lg-6 about-content" data-aos="fade-up" data-aos-delay="100">
-        <div class="progress-bar">
-          <div class="progress"></div>
-        </div>
-        <div class="d-flex align-items-center justify-content-between">
-          <p id="level-display">level: 1</p>
-          <h3 class="text-center" id="message">Ready?</h3>
-          <button class="" id="next-level" type="button" disabled>Next Level</button>
+                <div class="d-flex align-items-center justify-content-center">
+                  <button
+                    class="btn lvl-btn"
+                    id="prev-level"
+                    type="button"
+                    disabled
+                  >
+                    Prev
+                  </button>
+                  <p id="level-display">level: 1/15</p>
+
+                  <button
+                    class="lvl-btn"
+                    id="next-level"
+                    type="button"
+                    disabled
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 about-content">
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+
+            <div class="rounded-3 border border-white" id="train-yard">
+              <h4 class="p-2 text-white" id="train-array">
+                [ Your array will display here ]
+              </h4>
+              <div class="train" id="train"></div>
+            </div>
+          </div>
           <p id="points-display">Points: 0</p>
         </div>
-               <div class="rounded-3 border border-white" id="train-yard">
-                        <h4 class="p-2 text-white" id="train-array">[ Your array will display here ]</h4>
-                        <div class="train" id="train"></div>
-               </div>
       </div>
+    </section>
+    <!-- /Play Section -->
 
-      <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-        <div class="about-content ps-0 ps-lg-3">
-          <form id="form">
-            <div class="input-group">
-              <input class="form-control" id="input" placeholder="Write code here..." type="text" />
-              <button class="btn-play" id="submit" type="button">TRY</button>
-            </div>
-          </form>
-          <p id="info">In JavaScript, an array is a special type of object that contains a collection of items. Array items are always aligned within square brackets, kind of like how train cars are aligned on a track.</p>
-          <h4 id="challenge">Type the following code to establish your empty array and lay down the tracks:</h4>
-          <div class="">
-            <button class="btn-play " id="hint-button" type="button" disabled>Hint</button>
-            <code id="hint">const myTracks = [];</code>
-          </div>
-        
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-</section><!-- /Play Section -->
-
-
-
-   <script src="main.js"></script>
- </body>
+    <script src="main.js"></script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
