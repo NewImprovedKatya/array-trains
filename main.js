@@ -119,7 +119,7 @@ const levelInfo = [
     answer: `const myTracks = [];`,
     action: () => {
       const rail = document.createElement("img");
-      rail.src = "/img/track.svg";
+      rail.src = "img/track.svg";
       train.appendChild(rail);
     },
   },
