@@ -105,6 +105,7 @@ function nextLevel() {
     levelDisplay.textContent = "Level: " + level;
     progress.style.width = Math.round((level / totalLevels) * 100) + "%";
     hintDisplay();
+    answer.textContent = levelInfo[level].answer;
   }
 }
 
