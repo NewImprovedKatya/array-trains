@@ -284,6 +284,6 @@ function hintDisplay() {
 }
 
 function revealHint() {
-  hintButton.remove();
+  hintButton.style.display = 'none';
   answer.style.display = 'block';
 }
