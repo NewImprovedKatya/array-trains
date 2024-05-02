@@ -27,6 +27,7 @@ playButton.addEventListener("click", play);
 function play() {
   offDiv.style.display = "block";
   intro.style.display = "none";
+  levelDisplay.textContent = `Level: ${level + 1} / ${levelInfo.length}`;
 }
 
 submitButton.addEventListener("click", submitAnswer);
@@ -73,7 +74,6 @@ function submitAnswer() {
     points -= 1;
   }
 
-  pointsDisplay.textContent = "Points: " + points;
 }
 
 function refreshTrain() {
@@ -96,14 +96,14 @@ function nextLevel() {
     submitButton.disabled = true;
   } else {
     level += 1;
+    console.log(level);
     nextLevelButton.disabled = true;
     info.textContent = levelInfo[level].info;
     challenge.textContent = levelInfo[level].challenge;
     submitButton.disabled = false;
     message.textContent = "Ready?";
     document.getElementById("form").reset();
-    levelDisplay.textContent = "Level: " + level;
-    progress.style.width = Math.round((level / totalLevels) * 100) + "%";
+    levelDisplay.textContent = `Level: ${level + 1} / ${levelInfo.length}`;
     answer.textContent = levelInfo[level].answer;
     hintDisplay();
   }
@@ -258,19 +258,6 @@ const levelInfo = [
 function indexSelect(index) {
   trainWrapper.children[index].style.boxShadow = "inset 0 0 5px #303030";
 }
-// function hintDisplay() {
-//   if (levelInfo[level].hint === true) {
-//     answer.style.display = 'none';
-//     const hintButton = document.createElement('button');
-//     hintButton.textContent = 'HINT';
-//     document.getElementById('hint-div').appendChild(hintButton);
-//     hintButton.addEventListener('click', revealHint);
-//   } else {
-//     answer.style.display = 'block';
-//     answer.textContent = levelInfo[level].answer;
-//     hintButton.remove();
-//   }
-// }
 
 hintButton.addEventListener('click', revealHint);
 
