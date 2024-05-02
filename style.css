@@ -254,11 +254,12 @@ section,
 }
 img {
   width: 100%;
+  margin: 0px;
 }
 .train {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  aspect-ratio: 6 / 2;
+
   gap: 4px;
 }
 .tracks {
