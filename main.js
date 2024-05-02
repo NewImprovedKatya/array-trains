@@ -27,6 +27,7 @@ playButton.addEventListener("click", play);
 function play() {
   offDiv.style.display = "block";
   intro.style.display = "none";
+  levelDisplay.textContent = `Level: ${level + 1} / ${levelInfo.length}`;
 }
 
 submitButton.addEventListener("click", submitAnswer);
@@ -102,9 +103,8 @@ function nextLevel() {
     submitButton.disabled = false;
     message.textContent = "Ready?";
     document.getElementById("form").reset();
-    levelDisplay.textContent = "Level: " + level;
+    levelDisplay.textContent = `Level: ${level + 1} / ${levelInfo.length}`;
     answer.textContent = levelInfo[level].answer;
-    console.log(levelInfo[level].hint + ' ' + level);
     hintDisplay();
   }
 }
