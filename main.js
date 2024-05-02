@@ -120,7 +120,7 @@ const levelInfo = [
     answer: `const myTracks = [];`,
     action: () => {
       const rail = document.createElement("img");
-      rail.src = "/img/track.svg";
+      rail.src = "img/track.svg";
       train.appendChild(rail);
     },
   },
@@ -272,6 +272,6 @@ function hintDisplay() {
 }
 
 function revealHint() {
-  hintButton.remove();
+  hintButton.style.display = 'none';
   answer.style.display = 'block';
 }
