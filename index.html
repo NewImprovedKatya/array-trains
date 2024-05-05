@@ -21,44 +21,47 @@
     <title>Array Trains Game</title>
   </head>
   <body>
-    <!-- Hero Section -->
+    <!-- Splash Page -->
     <section id="hero" class="section hero intro">
       <div class="container">
         <div class="row gy-4">
           <div
             class="col order-2 order-lg-1 d-flex flex-column justify-content-center align-items-center"
           >
-            <h1 class="">Array Trains</h1>
-            <p>Learn Javascript arrays by assembling fun trains!</p>
+            <h1 class="h1 text-center">Array Trains</h1>
+            <p class="lead text-center">Learn Javascript arrays by assembling fun trains!</p>
             <div class="d-flex">
-              <button class="btn-play" id="play" type="button">PLAY</button>
+              <button class="btn-lg button rounded-pill" id="play" type="button">PLAY</button>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- /Hero Section -->
+    <!-- /Splash page -->
 
     <!-- Play Section -->
-    <section id="about" class="section about play">
+    <section id="play" class="section play">
       <div class="container">
         <div class="row gy-3">
-          <div class="col-lg-6 d-flex flex-column justify-content-center">
-            <div class="about-content ps-0 ps-lg-3">
-              <p id="info">
-                In JavaScript, an array is a special type of object that
-                contains a collection of items. Array items are always aligned
-                within square brackets, kind of like how train cars are aligned
-                on a track.
-              </p>
-              <h4 id="challenge">
-                Type the following code to establish your empty array and lay
-                down the tracks:
-              </h4>
-
+          <div class="col-lg-6 d-flex flex-column justify-content-center ">
+            
+              <div class="card p-1 mb-2">
+                <p class="m-0" id="info">
+                  In JavaScript, an array is a special type of object that
+                  contains a collection of items. Array items are always aligned
+                  within square brackets, kind of like how train cars are aligned
+                  on a track.
+                </p>
+              </div>
+              <div class="card p-1 mb-2">
+                <h4 id="challenge">
+                  Type the following code to establish your empty array and lay
+                  down the tracks:
+                </h4>
+              </div>
               <div id="hint-div" class="d-flex justify-content-center">
-                <button id="hint-button" type="button">HINT</button>
-                <code id="hint">const myTracks = [];</code>
+                <button class="button rounded-pill" id="hint-button" type="button">HINT</button>
+                <code class="m-0 justify-content-center align-items-center" id="hint">const myTracks = [];</code>
               </div>
 
               <h3 class="text-center" id="message">Ready?</h3>
@@ -66,12 +69,12 @@
               <form id="form">
                 <div class="input-group">
                   <input
-                    class="form-control"
+                    class="form-control input"
                     id="input"
                     placeholder="Write code here..."
                     type="text"
                   />
-                  <button class="btn btn-play" id="submit" type="button">
+                  <button class="btn-lg button next" id="submit" type="button">
                     TRY
                   </button>
                 </div>
@@ -79,32 +82,38 @@
 
               <div class="d-flex w-100 mt-3 justify-content-between">
                 <button
-                  class="btn btn-play lvl-btn"
+                  class="btn-lg button prev"
                   id="prev-level"
                   type="button"
-                  disabled
                 >
                   Prev
                 </button>
-                <p id="level-display" class="w-*"></p>
+                  <p id="level-display" class="d-flex justify-content-center align-items-center button btn-lg rounded-0"></p>
 
                 <button
-                  class="btn-play lvl-btn"
+                  class="btn-lg button next"
                   id="next-level"
                   type="button"
-                  disabled
                 >
                   Next
                 </button>
               </div>
-            </div>
+            
           </div>
-          <div class="col-lg-6 about-content">
-            <div class="rounded-3 border border-white p-2" id="train-yard">
-              <h4 class="p-2 text-white" id="train-array">
-                [ Your array will display here ]
-              </h4>
-              <div class="train" id="train"></div>
+    <!-- Trains -->
+          <div class="col-lg-6">
+            <div class="sky">
+              <h4 class="my-2 text-center" id="train-array">
+                  [ Your array will display here ]
+                </h4>
+              <div class="" id="train-area">
+                <div class="" id="train-yard">
+                  <img id="train-background" src="img/background.svg" alt="">
+                  <div class="train px-2 " id="train">
+                
+                  </div>
+              </div>
+              </div>
             </div>
           </div>
         </div>
