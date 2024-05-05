@@ -1,393 +1,193 @@
-// Game global variables
-let myTracks = [];
-let level = 0;
-let points = 0;
-
-// This Array contains the level instructions
-const levelInfo = [
-  {
-    hint: false,
-    car: "track",
-    info: `In JavaScript, an array is a special type of object that contains a collection of items. Array items are always aligned within square brackets, kind of like how train cars are aligned on a track.`,
-    challenge: `Type the following code to establish your empty array and lay down the tracks:`,
-    answer: `const myTracks = [];`,
-    action: () => {
-      const rail = document.createElement("img");
-      rail.src = "/img/track.svg";
-      rail.className = 'track';
-      trainArea.appendChild(rail);
-    },
-  },
-  {
-    hint: false,
-    info: "To add an item to an array, you can use a method called PUSH.",
-    challenge: "Add an engine to your tracks by typing in the following code:",
-    answer: "myTracks.push('engine');",
-    action: () => {
-      myTracks.push('engine');
-    },
-  },
-  {
-    hint: false,
-    car: "boxcar",
-    info: "Fantastic! Let’s add a boxcar. The push method always adds the item to the end of the array.",
-    challenge:
-      "Type the following code to add a boxcar to the end of your train:",
-    answer: `myTracks.push('boxcar');`,
-    action: function () {
-      myTracks.push('boxcar');
-    },
-  },
-  {
-    hint: false,
-    info: "Now let’s add a passenger car.",
-    challenge: "Type the code to add a passenger car:",
-    answer: `myTracks.push('passenger-car');`,
-    action: () => {
-      myTracks.push('passenger-car');
-    },
-  },
-  {
-    hint: true,
-    info: "Challenge time!",
-    challenge: "Can you add a caboose without looking at the hint?",
-    answer: `myTracks.push('caboose');`,
-    action: function () {
-      myTracks.push('caboose');
-    },
-  },
-  {
-    hint: false,
-    info: "Well done! Let’s add a tanker car.",
-    challenge: "Type the code to add a tanker car:",
-    answer: `myTracks.push('tanker-car');`,
-    action: function () {
-      myTracks.push('tanker-car');
-    },
-  },
-  {
-    hint: false,
-    info: "Hm, the caboose should be on the end. Let’s use the POP method to pop the tanker off the end of the array.",
-    challenge: "Type the following code to remove the last item in the array:",
-    answer: `myTracks.pop();`,
-    action: function () {
-      myTracks.pop();
-    },
-  },
-  {
-    hint: false,
-    info: "Now do the same thing to the caboose.",
-    challenge: "Type the code to remove the last item in the array:",
-    answer: `myTracks.pop();`,
-    action: function () {
-      myTracks.pop();
-    },
-  },
-  {
-    hint: true,
-    info: "Let's add them back on in the correct order.",
-    challenge: "Use the push method to add a tanker car.",
-    answer: `myTracks.push('tanker-car');`,
-    action: function () {
-      myTracks.push('tanker-car');
-    },
-  },
-  {
-    hint: true,
-    info: "Perfect! Now we can reinstall the caboose.",
-    challenge: "Use the push method to add a caboose.",
-    answer: `myTracks.push('caboose');`,
-    action: function () {
-      myTracks.push('caboose');
-    },
-  },
-  {
-    hint: false,
-    info: "Push and pop are great, but what if we want to remove an item at the other end of the array? For that, we can use the SHIFT method.",
-    challenge: "Type the code to remove the first item in the array:",
-    answer: `myTracks.shift();`,
-    action: function () {
-      myTracks.shift();
-    },
-  },
-  {
-    hint: false,
-    info: "Great! Now we can use the UNSHIFT method to add an item to the front.",
-    challenge: "Type the code to add a flatcar to the front of the array;",
-    answer: `myTracks.unshift('flatcar');`,
-    action: function () {
-      myTracks.unshift('flatcar');
-    },
-  },
-  {
-    hint: false,
-    info: "Our train won’t get far without an engine!",
-    challenge: "Type the code to add an engine to the front of the array:",
-    answer: `myTracks.unshift('engine');`,
-    action: function () {
-      myTracks.unshift('engine');
-    },
-  },
-  {
-    hint: false,
-    info: "Most array methods have a return value in addition to their primary action. SHIFT’s return value is the item it removed. This allows us to take an item from the front and put it somewhere else.",
-    challenge: "Type the code to move the engine to the back of the array:",
-    answer: `myTracks.push(myTracks.shift());`,
-    action: function () {
-      myTracks.push(myTracks.shift());
-    },
-  },
-  {
-    hint: false,
-    info: "The POP method also returns the item it removes.",
-    challenge:
-      "Type the code to remove the engine from the back and place it in the front.",
-    answer: `myTracks.unshift(myTracks.pop());`,
-    action: function () {
-      myTracks.unshift(myTracks.pop());
-    },
-  },
-  {
-    hint: false,
-    info: "Every item in an array is given an index number starting from 0. You can use this index number to target an item anywhere in the array.",
-    challenge:
-      "Type the following code to target the engine and turn it into a tanker car:",
-    answer: `myTracks[0] = 'tanker-car';`,
-    action: function () {
-      myTracks[0] = 'tanker-car';
-    },
-  },
-  {
-    hint: false,
-    info: "Let’s practice using the array index.",
-    challenge:
-      "Type the code to replace the item in position 1 with the item in position 3:",
-    answer: `myTracks[1] = myTracks[3];`,
-    action: function () {
-      myTracks[1] = myTracks[3];
-    },
-  },
-  {
-    hint: false,
-    info: "Now that we know how the index works, we can use the SPLICE method. Splice can be used to remove items in an array. We can specify a starting index and splice will remove that item and all following items.",
-    challenge:
-      "Type the following code to remove all items starting at index 3:",
-    answer: `myTracks.splice(3);`,
-    action: function () {
-      myTracks.splice(3);
-    },
-  },
-  {
-    hint: false,
-    info: "You can also specify how many items you want splice to remove.",
-    challenge:
-      "Type the following code to remove two items starting at index 0:",
-    answer: `myTracks.splice(0, 2);`,
-    action: function () {
-      myTracks.splice(0, 2);
-    },
-  },
-  {
-    hint: false,
-    info: "Splice can also add items.",
-    challenge:
-      "Type the following code to remove one item starting at index 0 and add a caboose:",
-    answer: `myTracks.splice(0, 1, 'caboose');`,
-    action: function () {
-      myTracks.splice(0, 1, 'caboose');
-    },
-  },
-  {
-    hint: false,
-    info: "Splice can add more than one item at a time.",
-    challenge:
-      "Type the following code to remove one item starting at index 0 and add a passenger car and tanker car:",
-    answer: `myTracks.splice(0, 1, 'passenger-car', 'tanker-car');`,
-    action: function () {
-      myTracks.splice(0, 1, 'passenger-car', 'tanker-car');
-    },
-  },
-  {
-    hint: false,
-    info: "If you don't want to remove any items, you can input zero as the number of items to be removed",
-    challenge:
-      "Type the following code to remove zero items starting at index 0 and add an engine and flatcar:",
-    answer: `myTracks.splice(0, 0, 'engine', 'flatcar');`,
-    action: function () {
-      myTracks.splice(0, 0, 'engine', 'flatcar');
-    },
-  },
-  {
-    hint: false,
-    info: "Let's practice!",
-    challenge:
-      "Type the following code to add a caboose:",
-    answer: `myTracks.splice(4, 0, 'caboose');`,
-    action: function () {
-      myTracks.splice(4, 0, 'caboose');
-    },
-  },
-  {
-    hint: true,
-    info: "Can you use splice without looking?",
-    challenge:
-      "Use splice to add a boxcar at index position 2 without removing any items:",
-    answer: `myTracks.splice(2, 0, 'boxcar');`,
-    action: function () {
-      myTracks.splice(2, 0, 'boxcar');
-    },
-  },
-  /* {
-    hint: true,
-    info: "Well done! Have the energy for one more??",
-    challenge:
-      "Use splice to remove the flatcar, boxcar, and passenger car. Do not add any new items:",
-    answer: `myTracks.splice(1, 3);`,
-    action: function () {
-      myTracks.splice(1, 3);
-    },
-  }, */
-];
-
-// Interface Global variables
-const offDiv = document.querySelector(".play");
-const intro = document.querySelector(".intro");
-const message = document.getElementById("message");
-const answer = document.getElementById("hint");
-const question = document.getElementById("challenge");
-const info = document.getElementById("info");
-const trainArray = document.getElementById("train-array");
-const train = document.getElementById("train-yard");
-const levelDisplay = document.getElementById("level-display");
-const pointsDisplay = document.getElementById("points-display");
-const playButton = document.getElementById("play");
-const submitButton = document.getElementById("submit");
-const hintButton = document.getElementById("hint-button");
-const progress = document.querySelector(".progress");
-const nextLevelButton = document.getElementById("next-level");
-const prevLevelButton = document.getElementById("prev-level");
-const trainWrapper = document.getElementById("train");
-const trainArea = document.getElementById("train-area");
-
-// This removes the splash screen and loads the game
-playButton.addEventListener("click", play);
-function play() {
-  offDiv.style.display = "block";
-  intro.style.display = "none";
-  levelDisplay.textContent = `Level: ${level + 1} / ${levelInfo.length}`;
+:root {
+  --heading-font: "Raleway", sans-serif;
+}
+/* Global Colors */
+:root {
+  --background-color: #c6e5f7;
+  --secondary-background-color: #e3f2fb;
+  --default-color: #212529;
+  --heading-color: #1076be;
+  --accent-color: linear-gradient(#f28e1f, #ed6a24);
+  --button-accent: #692a17;
+  --success: #82b740;
 }
 
-// Submit Button
-submitButton.addEventListener("click", submitAnswer);
-input.addEventListener("keypress", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    submitButton.click();
-  }
-});
+body {
+  background-color: var(--background-color);
+  color: var(--default-color);
+}
+/* Splash Page */
+.h1 {
+  color: #ed6a24;
+  -webkit-text-stroke: 0.2rem var(--button-accent);
+  font-size: 6rem;
+  font-weight: 700;
+  font-family: var(--heading-font);
+}
+.hero {
+  width: 100%;
+  min-height: 70vh;
+  position: relative;
+  padding: 7rem 0 3rem 0;
+  display: flex;
+  align-items: center;
+}
 
-// Checks to see if the answer is correct
-function submitAnswer() {
-  const removeSpacesAndSemicolons = /[\s;]/g;
-  let userInput = document.getElementById("input").value;
+.button {
+  background: var(--accent-color);
+  border: 0.2rem solid var(--button-accent);
+  color: var(--button-accent);
+}
+.play {
+  display: none;
+}
+code {
+  height: 3rem;
+}
+.card {
+  background-color: var(--secondary-background-color);
+  border: 0.2rem solid white;
+  border-radius: 1rem;
+}
+.card > p {
+  min-height: 6rem;
+}
+.card > h4 {
+  min-height: 3rem;
+}
+.input {
+  border-radius: 1rem;
+  border: 0.2rem solid var(--heading-color);
+  border-right: 0px;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+#level-display {
+  background-color: var(--accent-color);
+  flex-grow: 1;
+  height: 100%;
+  border-width: 0.2rem 0px;
+}
+#submit {
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  cursor: pointer;
+}
+.next {
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  filter: grayscale(30%);
+}
+.prev {
+  border-bottom-left-radius: 50px;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+  filter: grayscale(30%);
+}
+.sky {
+  z-index: 1;
+  border: 0.2rem solid white;
+  border-radius: 1rem;
+  background-color: #75b8e3;
 
-  let middleInput = userInput.replace(/["\u2018\u2019]/g, "'");
-  let finalInput = middleInput.replace(removeSpacesAndSemicolons, "");
+  z-index: 100;
+}
+#train-yard {
+  background-color: #82b740;
+  border-radius: 1rem;
+  min-height: 40%;
+  z-index: 1;
+}
+#train-area {
+  background-color: #82b740;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  position: relative;
+}
+img {
+  width: 100%;
+  margin: 0px;
+}
+.train {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1%;
+  position: absolute;
+  top: 0;
+}
+.train img {
+  z-index: 5;
+}
+.tracks {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+#train-background {
+  width: 100;
+  min-height: 40%;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  z-index: -1;
+}
+.track {
+  vertical-align: top;
+  margin-top: -1%;
+  z-index: 3;
+}
+.slot {
+  width: 100;
+}
+#hint-button {
+  display: none;
+  cursor: arrow;
+}
+#hint-div {
+  height: 3rem;
+}
 
-  const finalAnswer = levelInfo[level].answer.replace(
-    removeSpacesAndSemicolons,
-    ""
-  );
-  if (finalInput === finalAnswer) {
-    message.textContent = "Success!";
-    message.style.color = '#82b740';
-    nextLevelButton.disabled = false;
-    points += 10;
-    submitButton.disabled = true;
-    submitButton.style.filter = 'grayscale(30%)';
-    submitButton.style.curser = 'none';
-    nextLevelButton.disabled = false;
-    nextLevelButton.style.filter = 'none';
-    nextLevelButton.style.curser = 'pointer';
-    refreshTrain();
-    levelInfo[level].action();
-    console.log(myTracks);
+/* Section */
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  scroll-margin-top: 90px;
+  overflow: clip;
+}
 
-     for (const car of myTracks) {
-      const trainCar = document.createElement("img");
-      trainCar.src = `img/${car}.svg`;
-      trainCar.className = "slot";
-      trainWrapper.appendChild(trainCar);
-    } 
-
-    trainArray.textContent = `const myTracks = [${myTracks.join(", ")}];`;
-  } else {
-    message.textContent = "Try Again";
-    points -= 1;
+@media (max-width: 1199px) {
+  section,
+  .section {
+    scroll-margin-top: 66px;
   }
 }
 
-// Removes the train cars in between levels
-function refreshTrain() {
-  while(trainWrapper.firstChild) {
-      trainWrapper.removeChild(trainWrapper.firstChild);
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 3rem;
+    line-height: 2.5rem;
+    -webkit-text-stroke: 0.1rem var(--button-accent);
   }
-}
 
-// Loads next Level
-nextLevelButton.addEventListener("click", nextLevel);
-function prevLevel() {
-  level -= 1;
-  levelButton();
-}
-
-// Loads previous level
-prevLevelButton.addEventListener("click", prevLevel);
-function nextLevel() {
-  if (level === (levelInfo.length - 1)) {
-    message.textContent =
-      "Congratulations!";
-    challenge.textContent = `You've completed every available level.`;
-    info.textContent = "Our team is working hard to bring you more levels. Come back often to practice and see what's new!"
-    submitButton.disabled = true;
-    nextLevelButton.disabled = true;
-    nextLevelButton.style.filter = 'grayscale(30%)';
-  } else {
-    level += 1;
-    levelButton();
+  .hero p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2.5rem;
   }
-}
 
-function levelButton() {
-    message.style.color = '';
-    info.textContent = levelInfo[level].info;
-    challenge.textContent = levelInfo[level].challenge;
-    submitButton.disabled = false;
-    submitButton.style.filter = 'none';
-    submitButton.style.curser = 'pointer';
-    message.textContent = "Ready?";
-    document.getElementById("form").reset();
-    levelDisplay.textContent = `Level: ${level + 1} / ${levelInfo.length}`;
-    answer.textContent = levelInfo[level].answer;
-    hintDisplay();
-    nextLevelButton.disabled = true;
-    nextLevelButton.style.filter = 'grayscale(30%)';
-}
-
-hintButton.addEventListener('click', revealHint);
-
-function hintDisplay() {
-  console.log(level);
-  if (levelInfo[level].hint === true) {
-    hintButton.style.display = 'block';
-    answer.style.display = 'none';
-  } else {
-    hintButton.style.display = 'none';
-    answer.style.display = 'block';
+  .hero btn-play {
+    font-size: 13px;
   }
-}
-
-function revealHint() {
-  hintButton.style.display = 'none';
-  answer.style.display = 'block';
 }
