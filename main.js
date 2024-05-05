@@ -304,6 +304,11 @@ function submitAnswer() {
     nextLevelButton.disabled = false;
     points += 10;
     submitButton.disabled = true;
+    submitButton.style.filter = 'grayscale(30%)';
+    submitButton.style.curser = 'none';
+    nextLevelButton.disabled = false;
+    nextLevelButton.style.filter = 'none';
+    nextLevelButton.style.curser = 'pointer';
     refreshTrain();
     levelInfo[level].action();
     console.log(myTracks);
@@ -343,8 +348,10 @@ function nextLevel() {
     message.textContent =
       "Congratulations!";
     challenge.textContent = `You've completed every available level.`;
-    info.textContent = "Our team is working hard to bring you more levels. Come back often to see what's new!"
+    info.textContent = "Our team is working hard to bring you more levels. Come back often to practice and see what's new!"
     submitButton.disabled = true;
+    nextLevelButton.disabled = true;
+    nextLevelButton.style.filter = 'grayscale(30%)';
   } else {
     level += 1;
     levelButton();
@@ -356,11 +363,15 @@ function levelButton() {
     info.textContent = levelInfo[level].info;
     challenge.textContent = levelInfo[level].challenge;
     submitButton.disabled = false;
+    submitButton.style.filter = 'none';
+    submitButton.style.curser = 'pointer';
     message.textContent = "Ready?";
     document.getElementById("form").reset();
     levelDisplay.textContent = `Level: ${level + 1} / ${levelInfo.length}`;
     answer.textContent = levelInfo[level].answer;
     hintDisplay();
+    nextLevelButton.disabled = true;
+    nextLevelButton.style.filter = 'grayscale(30%)';
 }
 
 hintButton.addEventListener('click', revealHint);
