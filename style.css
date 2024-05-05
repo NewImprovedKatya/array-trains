@@ -74,19 +74,25 @@ h6 {
   height: 100%;
   border-width: 0.2rem 0px;
 }
-.next {
+#submit {
   border-bottom-right-radius: 50px;
   border-top-right-radius: 50px;
   border-bottom-left-radius: 0px;
   border-top-left-radius: 0px;
   cursor: pointer;
 }
+.next {
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  filter: grayscale(30%);
+}
 .prev {
   border-bottom-left-radius: 50px;
   border-top-left-radius: 50px;
   border-bottom-right-radius: 0px;
   border-top-right-radius: 0px;
-  cursor: pointer;
   filter: grayscale(30%);
 }
 .sky {
