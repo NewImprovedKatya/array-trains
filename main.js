@@ -1,16 +1,15 @@
 let myTracks = [];
 let level = 0;
 let points = 0;
-const totalLevels = 15;
 
 const offDiv = document.querySelector(".play");
 const intro = document.querySelector(".intro");
 
-let message = document.getElementById("message");
-let answer = document.getElementById("hint");
-let question = document.getElementById("challenge");
+const message = document.getElementById("message");
+const answer = document.getElementById("hint");
+const question = document.getElementById("challenge");
 const info = document.getElementById("info");
-let trainArray = document.getElementById("train-array");
+const trainArray = document.getElementById("train-array");
 const train = document.getElementById("train-yard");
 const levelDisplay = document.getElementById("level-display");
 const pointsDisplay = document.getElementById("points-display");
@@ -19,8 +18,10 @@ const submitButton = document.getElementById("submit");
 const hintButton = document.getElementById("hint-button");
 const progress = document.querySelector(".progress");
 const nextLevelButton = document.getElementById("next-level");
+const prevLevelButton = document.getElementById("prev-level");
 
 const trainWrapper = document.getElementById("train");
+const trainArea = document.getElementById("train-area");
 
 playButton.addEventListener("click", play);
 
@@ -53,6 +54,7 @@ function submitAnswer() {
 
   if (finalInput === finalAnswer) {
     message.textContent = "Success!";
+    message.style.color = '#82b740';
     nextLevelButton.disabled = false;
 
     points += 10;
@@ -70,7 +72,7 @@ function submitAnswer() {
 
     trainArray.textContent = `const myTracks = [${myTracks.join(", ")}];`;
   } else {
-    message.textContent = "try again";
+    message.textContent = "Try Again";
     points -= 1;
   }
 
@@ -84,20 +86,29 @@ function refreshTrain() {
 
 
 nextLevelButton.addEventListener("click", nextLevel);
+prevLevelButton.addEventListener("click", prevLevel);
+
+function prevLevel() {
+  level -= 1;
+  levelButton();
+}
 
 function nextLevel() {
-  if (level === totalLevels - 1) {
+  if (level === levelInfo.length) {
     message.textContent =
       "Congratulations! You've completed every available level.";
     challenge.textContent = `Your total score is ${points} out of ${
-      totalLevels * 10
+      levelInfo.length * 10
     }!`;
-    nextLevelButton.disabled = true;
     submitButton.disabled = true;
   } else {
     level += 1;
-    console.log(level);
-    nextLevelButton.disabled = true;
+    levelButton();
+  }
+}
+
+function levelButton() {
+    message.style.color = '';
     info.textContent = levelInfo[level].info;
     challenge.textContent = levelInfo[level].challenge;
     submitButton.disabled = false;
@@ -106,7 +117,6 @@ function nextLevel() {
     levelDisplay.textContent = `Level: ${level + 1} / ${levelInfo.length}`;
     answer.textContent = levelInfo[level].answer;
     hintDisplay();
-  }
 }
 
 
@@ -120,8 +130,9 @@ const levelInfo = [
     answer: `const myTracks = [];`,
     action: () => {
       const rail = document.createElement("img");
-      rail.src = "img/track.svg";
-      train.appendChild(rail);
+      rail.src = "/img/track.svg";
+      rail.className = 'track';
+      trainArea.appendChild(rail);
     },
   },
   {
@@ -262,6 +273,7 @@ function indexSelect(index) {
 hintButton.addEventListener('click', revealHint);
 
 function hintDisplay() {
+  console.log(level);
   if (levelInfo[level].hint === true) {
     hintButton.style.display = 'block';
     answer.style.display = 'none';
